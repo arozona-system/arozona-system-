@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Home from "./screens/Home";
+import Home from "./screens/Home.jsx";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
 import Dashboard from "./screens/Dashboard";
