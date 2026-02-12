@@ -116,4 +116,36 @@ function Modal({ open, onClose, children }) {
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-const [showGame, setShowGame] = useState(false);
+  const [showGame, setShowGame] = useState(false);
+
+  const handleWrongPin = () => {
+    setShowGame(true);
+  };
+
+  const handleRetry = () => {
+    setShowGame(false);
+  };
+
+  const handleSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
+  return (
+    <>
+      {!isLoggedIn && !showGame && (
+        <PinScreen onSuccess={handleSuccess} onWrong={handleWrongPin} />
+      )}
+
+      {showGame && !isLoggedIn && (
+        <DinoGame onRetry={handleRetry} />
+      )}
+
+      {isLoggedIn && (
+        <div className="screen center">
+          <h1 className="title accent">Bienvenue dans le système</h1>
+          <p>Accès autorisé.</p>
+        </div>
+      )}
+    </>
+  );
+}
