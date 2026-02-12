@@ -3,7 +3,6 @@ import Home from "./screens/Home.jsx";
 import Register from "./screens/Register.jsx";
 import Login from "./screens/Login.jsx";
 import Dashboard from "./screens/Dashboard.jsx";
-import { getUser } from "./utils/storage";
 
 export default function App() {
   const [screen, setScreen] = useState("home");
