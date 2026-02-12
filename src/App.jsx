@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const randomId = () => Date.now().toString() + Math.random().toString(16).slice(2);
 
-/* ----------------------------------------------------------
-   MINI-JEU : DINO
----------------------------------------------------------- */
 function DinoGame({ onRetry }) {
   const [dinoY, setDinoY] = useState(0);
   const [cactusX, setCactusX] = useState(100);
@@ -70,9 +67,6 @@ function DinoGame({ onRetry }) {
   );
 }
 
-/* ----------------------------------------------------------
-   ÉCRAN DE CODE PIN
----------------------------------------------------------- */
 function PinScreen({ onSuccess, onWrong, onCreateAccount }) {
   const [pin, setPin] = useState('');
 
@@ -113,9 +107,6 @@ function PinScreen({ onSuccess, onWrong, onCreateAccount }) {
   );
 }
 
-/* ----------------------------------------------------------
-   MODALE
----------------------------------------------------------- */
 function Modal({ open, onClose, children }) {
   if (!open) return null;
   return (
@@ -127,9 +118,7 @@ function Modal({ open, onClose, children }) {
   );
 }
 
-/* ----------------------------------------------------------
-   APP PRINCIPALE
----------------------------------------------------------- */
+
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showGame, setShowGame] = useState(false);
