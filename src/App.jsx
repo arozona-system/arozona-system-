@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 const randomId = () => Date.now().toString() + Math.random().toString(16).slice(2);
 
+/* ----------------------------------------------------------
+   MINI-JEU : DINO
+---------------------------------------------------------- */
 function DinoGame({ onRetry }) {
   const [dinoY, setDinoY] = useState(0);
   const [cactusX, setCactusX] = useState(100);
@@ -67,7 +70,10 @@ function DinoGame({ onRetry }) {
   );
 }
 
-function PinScreen({ onSuccess, onWrong }) {
+/* ----------------------------------------------------------
+   ÉCRAN DE CODE PIN
+---------------------------------------------------------- */
+function PinScreen({ onSuccess, onWrong, onCreateAccount }) {
   const [pin, setPin] = useState('');
 
   const pressKey = (num) => {
@@ -99,10 +105,17 @@ function PinScreen({ onSuccess, onWrong }) {
           <button key={n} className="key" onClick={() => pressKey(n.toString())}>{n}</button>
         ))}
       </div>
+
+      <button className="btn secondary" onClick={onCreateAccount}>
+        Créer un compte
+      </button>
     </div>
   );
 }
 
+/* ----------------------------------------------------------
+   MODALE
+---------------------------------------------------------- */
 function Modal({ open, onClose, children }) {
   if (!open) return null;
   return (
@@ -114,38 +127,19 @@ function Modal({ open, onClose, children }) {
   );
 }
 
+/* ----------------------------------------------------------
+   APP PRINCIPALE
+---------------------------------------------------------- */
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showGame, setShowGame] = useState(false);
+  const [creatingAccount, setCreatingAccount] = useState(false);
 
-  const handleWrongPin = () => {
-    setShowGame(true);
-  };
-
-  const handleRetry = () => {
-    setShowGame(false);
-  };
-
-  const handleSuccess = () => {
-    setIsLoggedIn(true);
-  };
+  const handleWrongPin = () => setShowGame(true);
+  const handleRetry = () => setShowGame(false);
+  const handleSuccess = () => setIsLoggedIn(true);
 
   return (
     <>
-      {!isLoggedIn && !showGame && (
-        <PinScreen onSuccess={handleSuccess} onWrong={handleWrongPin} />
-      )}
+      {/* Écran de création de compte */}
 
-      {showGame && !isLoggedIn && (
-        <DinoGame onRetry={handleRetry} />
-      )}
-
-      {isLoggedIn && (
-        <div className="screen center">
-          <h1 className="title accent">Bienvenue dans le système</h1>
-          <p>Accès autorisé.</p>
-        </div>
-      )}
-    </>
-  );
-}
