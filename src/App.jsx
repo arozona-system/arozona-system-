@@ -116,4 +116,4 @@ function Modal({ open, onClose, children }) {
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showGame, setShow
+const [showGame, setShowGame] = useState(false);
