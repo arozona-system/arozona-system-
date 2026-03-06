@@ -39,9 +39,3 @@ export default function Login({ onBack, onLogged }) {
     </div>
   );
 }
-
-      <button className="btn primary" onClick={submit}>Se connecter</button>
-      <button className="btn secondary" onClick={onBack}>Retour</button>
-    </div>
-  );
-}
