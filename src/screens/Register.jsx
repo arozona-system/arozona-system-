@@ -15,7 +15,7 @@ export default function Register({ onBack, onRegistered }) {
   };
 
   return (
-    <div className="screen center">
+    <div className="screen">
       <h1>Créer un compte</h1>
 
       <input
@@ -31,8 +31,13 @@ export default function Register({ onBack, onRegistered }) {
         maxLength={4}
       />
 
-      <button className="btn primary" onClick={submit}>Créer</button>
-      <button className="btn secondary" onClick={onBack}>Retour</button>
+      <button className="btn primary" onClick={submit}>
+        Créer
+      </button>
+
+      <button className="btn secondary" onClick={onBack}>
+        Retour
+      </button>
     </div>
   );
 }
