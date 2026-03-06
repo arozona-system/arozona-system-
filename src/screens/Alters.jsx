@@ -1,56 +1,22 @@
-import { useState } from "react";
-import { updateUser } from "../utils/storage";
+import Header from "../components/Header";
 
-export default function Alters({ user }) {
-  const [refresh, setRefresh] = useState(false);
-
-  const setController = (index) => {
-    user.alters.forEach((a, i) => {
-      a.controller = i === index;
-    });
-
-    user.journal.push({
-      alter: user.alters[index].name,
-      time: new Date().toLocaleString(),
-    });
-
-    updateUser(user);
-    setRefresh(!refresh);
-  };
-
+export default function Alters({ user, onLogout, onNavigate }) {
   return (
-    <div>
-      <h2>Vos alters</h2>
+    <>
+      <Header user={user} onLogout={onLogout} onNavigate={onNavigate} />
 
-      <button className="btn primary" onClick={() => alert("no info")}>
-        Créer un alter
-      </button>
+      <div className="page">
+        <h1>Vos alters</h1>
 
-      <div className="alter-list">
-        {user.alters.length === 0 && <p>Aucun alter pour le moment.</p>}
+        <button
+          className="btn primary"
+          onClick={() => onNavigate("createAlter")}
+        >
+          Créer un alter
+        </button>
 
-        {user.alters.map((alter, index) => (
-          <div key={index} className="alter-card">
-            <h3>{alter.name}</h3>
-            <p>Âge : {alter.age}</p>
-            <p>Genre : {alter.gender}</p>
-            <p>Rôle : {alter.role}</p>
-
-            <label>
-              <input
-                type="checkbox"
-                checked={alter.controller || false}
-                onChange={() => setController(index)}
-              />
-              Au contrôle
-            </label>
-
-            <button className="btn secondary" onClick={() => alert("no info")}>
-              Modifier
-            </button>
-          </div>
-        ))}
+        <p>Aucun alter pour le moment.</p>
       </div>
-    </div>
+    </>
   );
 }
