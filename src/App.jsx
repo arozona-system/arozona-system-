@@ -3,29 +3,28 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import Dashboard from "./screens/Dashboard";
+import Alters from "./screens/Alters";
+import Relations from "./screens/Relations";
+import Journal from "./screens/Journal";
 
 export default function App() {
   const [screen, setScreen] = useState("home");
   const [currentUser, setCurrentUser] = useState(null);
 
-  // Navigation entre les écrans
   const handleNavigate = (target) => {
     setScreen(target);
   };
 
-  // Quand l'utilisateur se connecte
   const handleLogged = (user) => {
     setCurrentUser(user);
     setScreen("dashboard");
   };
 
-  // Quand l'utilisateur crée un compte
   const handleRegistered = (user) => {
     setCurrentUser(user);
     setScreen("dashboard");
   };
 
-  // Déconnexion
   const handleLogout = () => {
     setCurrentUser(null);
     setScreen("home");
@@ -63,7 +62,7 @@ export default function App() {
       )}
 
       {screen === "alters" && currentUser && (
-        <Dashboard
+        <Alters
           user={currentUser}
           onLogout={handleLogout}
           onNavigate={handleNavigate}
@@ -71,7 +70,7 @@ export default function App() {
       )}
 
       {screen === "relations" && currentUser && (
-        <Dashboard
+        <Relations
           user={currentUser}
           onLogout={handleLogout}
           onNavigate={handleNavigate}
@@ -79,7 +78,7 @@ export default function App() {
       )}
 
       {screen === "journal" && currentUser && (
-        <Dashboard
+        <Journal
           user={currentUser}
           onLogout={handleLogout}
           onNavigate={handleNavigate}
