@@ -1,25 +1,17 @@
-import { useState } from "react";
-import Alters from "./Alters";
-import Relations from "./Relations";
-import Journal from "./Journal";
+import Header from "../components/Header";
 
-export default function Dashboard({ user, onLogout }) {
-  const [tab, setTab] = useState("alters");
-
+export default function Dashboard({ user, onLogout, onNavigate }) {
   return (
-    <div className="screen">
-      <h1>Bienvenue, {user.email}</h1>
+    <>
+      <Header user={user} onLogout={onLogout} onNavigate={onNavigate} />
 
-      <div className="tabs">
-        <button onClick={() => setTab("alters")}>Alters</button>
-        <button onClick={() => setTab("relations")}>Relations</button>
-        <button onClick={() => setTab("journal")}>Journal</button>
-        <button onClick={onLogout}>Déconnexion</button>
+      <div className="page">
+        <h1>Vos alters</h1>
+
+        <button className="btn primary">Créer un alter</button>
+
+        <p>Aucun alter pour le moment.</p>
       </div>
-
-      {tab === "alters" && <Alters user={user} />}
-      {tab === "relations" && <Relations user={user} />}
-      {tab === "journal" && <Journal user={user} />}
-    </div>
+    </>
   );
 }
