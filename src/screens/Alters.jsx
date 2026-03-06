@@ -22,7 +22,7 @@ export default function Alters({ user }) {
     <div>
       <h2>Vos alters</h2>
 
-      <button className="btn primary" onClick={() => alert("L'écran de création arrive bientôt ✨")}>
+      <button className="btn primary" onClick={() => alert("no info")}>
         Créer un alter
       </button>
 
@@ -45,7 +45,7 @@ export default function Alters({ user }) {
               Au contrôle
             </label>
 
-            <button className="btn secondary" onClick={() => alert("L'écran de modification arrive bientôt ✨")}>
+            <button className="btn secondary" onClick={() => alert("no info")}>
               Modifier
             </button>
           </div>
