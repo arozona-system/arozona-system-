@@ -9,12 +9,11 @@ export default function Login({ onBack, onLogged }) {
     const user = getUser(email);
     if (!user) return alert("Compte introuvable");
     if (user.pin !== pin) return alert("Code incorrect");
-
     onLogged(user);
   };
 
   return (
-    <div className="screen center">
+    <div className="screen">
       <h1>Connexion</h1>
 
       <input
@@ -29,6 +28,17 @@ export default function Login({ onBack, onLogged }) {
         onChange={(e) => setPin(e.target.value)}
         maxLength={4}
       />
+
+      <button className="btn primary" onClick={submit}>
+        Se connecter
+      </button>
+
+      <button className="btn secondary" onClick={onBack}>
+        Retour
+      </button>
+    </div>
+  );
+}
 
       <button className="btn primary" onClick={submit}>Se connecter</button>
       <button className="btn secondary" onClick={onBack}>Retour</button>
