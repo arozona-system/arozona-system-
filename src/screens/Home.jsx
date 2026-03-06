@@ -1,6 +1,6 @@
 export default function Home({ onRegister, onLogin }) {
   return (
-    <div className="screen center">
+    <div className="screen">
       <h1 className="title">Bienvenue</h1>
 
       <button className="btn primary" onClick={onRegister}>
